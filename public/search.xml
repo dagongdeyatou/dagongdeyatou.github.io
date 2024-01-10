@@ -4,23 +4,23 @@
   
     
     <entry>
-      <title>第一篇文章</title>
-      <link href="/posts/58489/"/>
-      <url>/posts/58489/</url>
+      <title>227小记</title>
+      <link href="/posts/46089/"/>
+      <url>/posts/46089/</url>
       
-        <content type="html"><![CDATA[<p>自古逢秋悲寂寥，我言秋日胜春朝</p>]]></content>
+        <content type="html"><![CDATA[<h3 id="记录一次227滑块的小细节"><a href="#记录一次227滑块的小细节" class="headerlink" title="记录一次227滑块的小细节"></a>记录一次227滑块的小细节</h3><p>ps：<code>本文是在经过ast解控制流替换文件后进行操作</code></p><p>1.首先搜索进入到如下图所示的页面<br><a href="https://tuchuang.voooe.cn/image/zN0NI"><img src="https://tuchuang.voooe.cn/images/2024/01/10/173811d761fd20b04bc06e1a9d2e7c0.md.png" alt="173811d761fd20b04bc06e1a9d2e7c0.md.png"></a><br>2.在全局新建一个index，并且在下图部分插入<br><a href="https://tuchuang.voooe.cn/image/zN4HO"><img src="https://tuchuang.voooe.cn/images/2024/01/10/bf50ee803e6b47c653199aebcf88903.md.png" alt="bf50ee803e6b47c653199aebcf88903.md.png"></a><br>3.通过条件断点控制进入我们想要进入的流程<br><a href="https://tuchuang.voooe.cn/image/zN74u"><img src="https://tuchuang.voooe.cn/images/2024/01/10/682f2afa4e08a7e2e601efec75e1cd4.md.png" alt="682f2afa4e08a7e2e601efec75e1cd4.md.png"></a><br>4.hook一下concat方法，因为都是通过这个方法连接起来的，自己大致看一下就可以发现</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">concat_</span> = <span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">concat</span></span><br><span class="line"><span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">concat</span> = <span class="keyword">function</span>(<span class="params"><span class="variable language_">arguments</span></span>)&#123;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;合并之前的数组：&quot;</span>,<span class="variable language_">this</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;预合并的数组：&quot;</span>,<span class="variable language_">arguments</span>)</span><br><span class="line">temp = <span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">concat_</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>,<span class="variable language_">arguments</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;合并后的数组：&quot;</span>,temp)</span><br><span class="line"><span class="keyword">return</span> temp</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>5.搜索<code>O = 227</code>找到加密生成的尾部进行断点，然后执行到此，就会发现打印出了我们想要了解到的信息<br><a href="https://tuchuang.voooe.cn/image/zNB1N"><img src="https://tuchuang.voooe.cn/images/2024/01/10/d947147683767f28fc11e383d3d8571.md.png" alt="d947147683767f28fc11e383d3d8571.md.png"></a><br>6.然后可以打开两个页面进行此操作，对比输出的数组，看看哪些是固定的，哪些是变化的，变化的直接通过条件断点控制流程进行详细分析即可</p><p>7.加密扣完之后需要涉及到轨迹，轨迹的各项数据详细分析如下<br><a href="https://tuchuang.voooe.cn/image/zNYmK"><img src="https://tuchuang.voooe.cn/images/2024/01/10/image.md.png" alt="image.md.png"></a><br>8.自己想办法生成轨迹，进行通过即可<br><a href="https://tuchuang.voooe.cn/image/zNk2H"><img src="https://tuchuang.voooe.cn/images/2024/01/10/9c1c5be917f214b2b631f70262ef761.md.png" alt="9c1c5be917f214b2b631f70262ef761.md.png"></a></p>]]></content>
       
       
       <categories>
           
-          <category> 日常 </category>
+          <category> Js逆向 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 古诗 </tag>
+            <tag> 滑块 </tag>
             
         </tags>
       

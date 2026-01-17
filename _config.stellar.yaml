@@ -14,7 +14,7 @@ inject:
     - <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" media="all" />
 
 logo:
-  icon: https://cdn.jsdelivr.net/gh/dagongdeyatou/img-bed@img/blog/202512/20201103135334_55c23_2025-12-31_200215.jpg
+  icon: https://dagongdeyatou-img-bed.oss-cn-hangzhou.aliyuncs.com/img/2026/01/shiba-20260117-095821.png
   title: 打工的丫头
   subtitle: "年少藏山河于心 以为过目即永 | 如今信寸墨留痕 方抵岁月无声"
 menubar:
@@ -51,6 +51,7 @@ site_tree:
     menu_id: topic
 
 article:
+  type: tech # 若要使用图文类文章，改成story
   share: [wechat, weibo, email, link]
 
 style:
@@ -65,3 +66,21 @@ style:
     body: '"LXGW WenKai Screen", system-ui, "Microsoft Yahei", "Segoe UI", -apple-system, Roboto, Ubuntu, "Helvetica Neue", Arial, "WenQuanYi Micro Hei", sans-serif'
     code: '"LXGW WenKai Screen", Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
     codeblock: 'Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
+
+# 添加ai摘要
+tianli_gpt:
+  enable: true
+  js: https://jsd.onmicrosoft.cn/gh/qxchuckle/Post-Summary-AI@6.0/chuckle-post-ai.min.js
+  field: post # all, post, wiki
+  key: 5Q5mpqRK5DkwT1X9Gi5e # tianli_gpt key
+  total_length: 1000 # 设置提交的字数限制，默认为1000字，上限为5000，超过5000字符将被截断
+  typewriter: true # 打字机动画
+  summary_directly: true # 是否直接显示摘要，否则显示 AI 简介
+  rec_method: all # all, web # 文章推荐方式，all：匹配数据库内所有文章进行推荐，web：仅当前站内的文章，默认all
+  hide_shuttle: true # 是否隐藏矩阵穿梭
+  summary_toggle: false # 是否开启切换简介功能，经过一些处理后，重新生成一份简介，这将消耗key字数
+  interface: # AI 信息展示
+    name: AI摘要
+    introduce: "我是文章辅助AI: QX-AI，点击下方的按钮，让我生成本文简介、推荐相关文章等。"
+    version: TianliGPT
+    button: ["介绍自己", "推荐文章", "生成摘要", "矩阵穿梭"] # 底部按钮文字

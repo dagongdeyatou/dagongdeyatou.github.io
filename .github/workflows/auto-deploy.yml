@@ -1,0 +1,55 @@
+name: auto deploy
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # 运行环境为最新版 Ubuntu
+    name: auto deploy
+    steps:
+      # 1. 获取源码
+      - name: Checkout
+        uses: actions/checkout@v3 # 使用 actions/checkout@v3
+        with: # 条件
+          submodules: true # Checkout private submodules(themes or something else). 当有子模块时切换分支
+          fetch-depth: 0
+
+      - name: Restore file modification time 🕒
+        run: find source/_posts -name '*.md' | while read file; do touch -d "$(git log -1 --format="@%ct" "$file")" "$file"; done
+
+      - name: Restore file modification time of wiki🕒
+        run: find source/wiki -name '*.md' | while read file; do touch -d "$(git log -1 --format="@%ct" "$file")" "$file"; done
+
+      - name: Restore file modification time of notes🕒
+        run: find source/notes -name '*.md' | while read file; do touch -d "$(git log -1 --format="@%ct" "$file")" "$file"; done
+
+      # 2. 配置环境
+      - name: Setup Node.js 22.15.0 #⭐改成自己的版本，node -v查看
+        uses: actions/setup-node@master
+        with:
+          node-version: "22.15.0" #⭐改成自己的版本，node -v查看
+
+      - name: Install pandoc
+        run: |
+          cd /tmp
+          wget -c https://github.com/jgm/pandoc/releases/download/2.14.0.3/pandoc-2.14.0.3-1-amd64.deb
+          sudo dpkg -i pandoc-2.14.0.3-1-amd64.deb
+      # 3. 生成静态文件
+      - name: Generate Public Files
+        run: |
+          npm i
+          npm install hexo-cli -g
+          hexo clean && hexo generate
+      # 4a. 部署到 GitHub 仓库（可选）
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.BLOG_TOKEN }} #⭐改成刚才的变量名
+          external_repository: dagongdeyatou/dagongdeyatou.github.io #⭐改成自己的仓库
+          publish_branch: main
+          publish_dir: ./public
+          commit_message: ${{ github.event.head_commit.message }}
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"

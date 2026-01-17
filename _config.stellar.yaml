@@ -5,11 +5,11 @@ preconnect:
 
 inject:
   head:
-    - <link rel="apple-touch-icon" sizes="180x180" href="/assets/xaoxuu/favicon/apple-touch-icon.png">
-    - <link rel="icon" type="image/png" sizes="32x32" href="/assets/xaoxuu/favicon/favicon-32x32.png">
-    - <link rel="icon" type="image/png" sizes="16x16" href="/assets/xaoxuu/favicon/favicon-16x16.png">
-    - <link rel="manifest" href="/assets/xaoxuu/favicon/site.webmanifest">
-    - <link rel="shortcut icon" href="/assets/xaoxuu/favicon/favicon.ico">
+    # - <link rel="apple-touch-icon" sizes="180x180" href="/assets/xaoxuu/favicon/apple-touch-icon.png">
+    # - <link rel="icon" type="image/png" sizes="32x32" href="/assets/xaoxuu/favicon/favicon-32x32.png">
+    # - <link rel="icon" type="image/png" sizes="16x16" href="/assets/xaoxuu/favicon/favicon-16x16.png">
+    # - <link rel="manifest" href="/assets/xaoxuu/favicon/site.webmanifest">
+    # - <link rel="shortcut icon" href="/assets/xaoxuu/favicon/favicon.ico">
     - <meta name="theme-color" content="#f8f8f8">
     - <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" media="all" />
 
@@ -53,13 +53,14 @@ site_tree:
 article:
   type: tech # 若要使用图文类文章，改成story
   auto_excerpt: 50 # 设置自动摘要长度
-  license: "本文由{author.name}编写，采用 [署名-非商业性使用-相同方式共享 4.0 国际](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议，带带单打独斗的弟弟。" # 许可协议
+  license: "本文由[@打工的丫头](/)编写，采用 [署名-非商业性使用-相同方式共享 4.0 国际](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议，转载请注明出处，带带单打独斗的弟弟。" # 许可协议
   related_posts: #开启可能感兴趣文章
     enable: true
     title: 您可能感兴趣的文章
   share: [wechat, weibo, email, link]
 
 style:
+  prefers_theme: light # light, dark, auto
   text-align: justify
   smooth_scroll: false
   codeblock:
@@ -81,3 +82,59 @@ search:
     content: true # 是否搜索内容
     skip_search: [] # 指定 path 中的内容不被搜索。
     codeblock: true # 是否搜索代码块（需要content: true)
+
+footer:
+  social:
+    # github:
+    #   icon: '<img src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/08a41b181ce68.svg"/>'
+    #   url: /
+    # music:
+    #   icon: '<img src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/3845874.svg"/>'
+    #   url: /
+    # unsplash:
+    #   icon: '<img src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/3616429.svg"/>'
+    #   url: /
+    # comments:
+    #   icon: '<img src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/942ebbf1a4b91.svg"/>'
+    #   url: /about/#comments
+  sitemap:
+    # - title: 博客
+    #   items:
+    #     - '[近期发布](/)'
+    #     - '[分类](/blog/categories/)'
+    #     - '[标签](/blog/tags/)'
+    #     - '[归档](/blog/archives/)'
+    # - title: 项目
+    #   items:
+    #     - '[xxx](/)'
+    #     - '[xxx](/)'
+    #     - '[xxx](/)'
+    #     - '[xxx](/)'
+    # - title: 社交
+    #   items:
+    #     - '[xxx](/)'
+    #     - '[xxx](/)'
+    #     - '[xxx](/)'
+    #     - '[xxx](/)'
+    # - title: 关于
+    #   items:
+    #     - '[xxx](/)'
+    #     - '[xxx](/)'
+    #     - '[xxx](/)'
+    #     - '[xxx](/)'
+  content: | # 支持 Markdown 格式
+    本站由 [@打工的丫头](/) 使用 [{theme.name} {theme.version}]({theme.tree}) 主题创建。
+    本博客所有文章除特别声明外，均采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议，转载请注明出处，带带单打独斗的弟弟。
+  # 主题用户越多，开发者维护和更新的积极性就越高，如果您喜欢本主题，请在适当的位置显示主题信息和仓库链接以表支持。
+
+######## Comments ########
+comments:
+  service: twikoo # beaudar, utterances, giscus, twikoo, waline, artalk
+  comment_title: 如果有疑问的话，欢迎留言讨论~
+  lazyload: false # true / false
+  custom_css: twikoo # artalk,twikoo,... 可以为没有全局启用的评论加载自定义样式
+  # Twikoo
+  # https://twikoo.js.org/
+  twikoo:
+    js: https://gcore.jsdelivr.net/npm/twikoo@1.6/dist/twikoo.all.min.js # 建议锁定版本
+    envId: https://twikoo.dagongdeyatou.cn # vercel函数

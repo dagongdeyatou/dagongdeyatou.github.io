@@ -9,10 +9,11 @@ favicon: https://dagongdeyatou-img-bed.oss-cn-hangzhou.aliyuncs.com/img/2026/01/
 # subtitle: ''
 # description: ''
 # keywords:
-# author: John Doe
+author: dagongdeyatou
 language:
   - zh-CN
   - en
+  - zh-TW
 timezone: "Asia/Shanghai"
 
 # URL

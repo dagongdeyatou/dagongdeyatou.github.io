@@ -14,9 +14,9 @@ inject:
     - <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" media="all" />
 
 logo:
-  icon: /assets/icon.svg
-  title: Stellar
-  subtitle: "每个人的独立博客 | Designed by xaoxuu"
+  icon: https://cdn.jsdelivr.net/gh/dagongdeyatou/img-bed@img/blog/202512/20201103135334_55c23_2025-12-31_200215.jpg
+  title: 打工的丫头
+  subtitle: "年少藏山河于心 以为过目即永 | 如今信寸墨留痕 方抵岁月无声"
 menubar:
   items:
     - id: post

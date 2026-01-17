@@ -26,10 +26,10 @@ jobs:
         run: find source/notes -name '*.md' | while read file; do touch -d "$(git log -1 --format="@%ct" "$file")" "$file"; done
 
       # 2. 配置环境
-      - name: Setup Node.js 22.15.0 #⭐改成自己的版本，node -v查看
+      - name: Setup Node.js 20.19.6 #⭐改成自己的版本，node -v查看
         uses: actions/setup-node@master
         with:
-          node-version: "22.15.0" #⭐改成自己的版本，node -v查看
+          node-version: "20.19.6" #⭐改成自己的版本，node -v查看
 
       - name: Install pandoc
         run: |

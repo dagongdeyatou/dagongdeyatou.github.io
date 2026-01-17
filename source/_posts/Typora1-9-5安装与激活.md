@@ -3,6 +3,7 @@ title: Typora1.9.5安装与激活
 date: 2026-01-17 19:13:43
 tags: Tools
 cover: https://dagongdeyatou-img-bed.oss-cn-hangzhou.aliyuncs.com/img/2026/01/t01ece38f7d929ea5d1-20260117-101301.jpg
+author: dagongdeyatou
 poster:
   #海报
   # 填写 topic 与 headline 时大标题位于上方

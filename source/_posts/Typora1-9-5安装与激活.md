@@ -8,8 +8,8 @@ poster:
   #海报
   # 填写 topic 与 headline 时大标题位于上方
   # 只填写 headline 或填写 headline 与 caption 时大标题位于下方
-  topic: #标题上方的小字
-  headline: #大标题
+  topic: 写markdown我只用Typora #标题上方的小字
+  headline: Typora1.9.5安装与激活 #大标题
   caption: #标题下方的小字
   color: #标题颜色
 ---

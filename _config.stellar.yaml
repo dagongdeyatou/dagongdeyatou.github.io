@@ -58,7 +58,6 @@ site_tree:
     menu_id: friends
 
 article:
-  type: tech # 若要使用图文类文章，改成story
   auto_excerpt: 50 # 设置自动摘要长度
   license: "本文由[@打工的丫头](/)编写，采用 [署名-非商业性使用-相同方式共享 4.0 国际](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议，转载请注明出处，带带单打独斗的弟弟。" # 许可协议
   related_posts: #开启可能感兴趣文章

@@ -132,9 +132,76 @@ function div_photo() {
   el += '</div>';
   return el;
 }
+function div_left_text_right_image() { // 改名更清晰
+  var el = '';
+  var cover_url;
+
+  if (obj.image != undefined) {
+    if (obj.image.includes('/')) {
+      cover_url = obj.image;
+    } else {
+      cover_url = 'https://source.unsplash.com/1280x640/?' + obj.image;
+    }
+  } else {
+    return div_default();
+  }
+
+  el += '<a class="post-card post" href="' + url_for(post.path) + '">';
+
+  // 🔥 先放文字（左侧）
+  el += '<article class="md-text" style="flex:1; padding:1.5rem;">';
+  
+  var title = obj.headline || post.title || date(post.date, config.date_format);
+  el += '<h2 class="post-title">' + title + '</h2>';
+
+  el += '<div class="excerpt"><p>';
+  if (obj.topic) {
+    el += obj.topic;
+  } else if (post.excerpt) {
+    el += strip_html(post.excerpt);
+  } else if (post.description) {
+    el += post.description;
+  } else if (post.content && theme.article.auto_excerpt > 0) {
+    el += truncate(strip_html(post.content), {length: theme.article.auto_excerpt});
+  }
+  el += '</p></div>';
+
+  el += '<div class="meta cap">';
+  el += '<span class="cap" id="post-meta">';
+  el += icon('default:calendar');
+  el += `<time datetime="${date_xml(post.date)}">${date(post.date, config.date_format)}</time>`;
+  el += '</span>';
+
+  if (post.categories && post.categories.length > 0 && post.layout === 'post') {
+    var cats = post.categories.map(cat => cat.name).join(' / ');
+    let lastCat = post.categories[post.categories.length - 1]?.name;
+    el += '<span class="cap breadcrumb"' + category_color(lastCat) + '>';
+    el += icon('default:category');
+    el += `<span>${cats}</span>`;
+    el += '</span>';
+  }
+
+  // 显示 tags
+  if (post.tags && post.tags.length > 0) {
+    post.tags.forEach(tag => {
+      el += '<span class="cap tag">' + tag.name + '</span>';
+    });
+  }
+
+  el += '</div>';
+  el += '</article>';
+
+  // 🔥 再放图片（右侧）
+  el += '<div class="post-cover">';
+  el += '<img src="' + cover_url + '" alt="cover">';
+  el += '</div>';
+
+  el += '</a>';
+  return el;
+}
 function div() {
-  if (obj.image && obj.image.length > 0 && obj.headline != undefined) {
-    return div_photo();
+  if (obj.image && obj.image.length > 0) {
+    return div_left_text_right_image(); // ← 左图右文
   }
   return div_default();
 }

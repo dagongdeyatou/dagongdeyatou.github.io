@@ -86,88 +86,82 @@
     font-size: $fs-14
 
 
-// posts
-.post-list .post-card .post-cover
+// 覆盖默认样式：左图右文布局（带柔边过渡）
+.post-list .post-card.post
+  display: flex
+  flex-direction: row
+  align-items: stretch
+  border-radius: $border-card-l
   overflow: hidden
-  width: 'calc(100% + 2 * %s)' % 1rem
-  border-radius: 0
-  margin-left: -1rem
-  margin-top: -1rem
-  margin-right: -1rem
-  background: var(--block)
-  &:not(.lazy)
-    trans1: transform 1s
-  img
-    object-fit: cover
-    width: 100%
-    border-radius: 0
-    aspect-ratio: hexo-config('article.cover_ratio')
-    
-.post-list .post-card.post.photo
-  .cover
+  margin: 1rem 0
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08)
+  transition: box-shadow 0.3s ease
+  text-decoration: none !important
+  background: var(--card)
+
+  &:hover
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12)
+
+  .post-cover
+    flex: 0 0 40%
+    margin: 0 !important
+    width: auto !important
     position: relative
-    line-height: 0
+    background: var(--block)
+
     img
+      height: 100%
       width: 100%
       object-fit: cover
-      aspect-ratio: hexo-config('article.cover_ratio') 
-      z-index 0
-    &:before
-      content: ''
-      z-index 1
+      display: block
       position: absolute
-      left: 0
-      right: 0
-      height: var(--blur-height)
-      backdrop-filter: saturate(var(--blur-sat)) blur(var(--blur-px))
-      -webkit-backdrop-filter: saturate(var(--blur-sat)) blur(var(--blur-px))
-      trans1 all
-    &[position=top]:before
       top: 0
-      mask: linear-gradient(black, rgba(black, 0.75), transparent)
-      -webkit-mask: linear-gradient(black, rgba(black, 0.75), transparent)
-    &[position=bottom]:before
-      bottom: 0
-      mask: linear-gradient(transparent, rgba(black, 0.75), black)
-      -webkit-mask: linear-gradient(transparent, rgba(black, 0.75), black)
-    .cover-info
-      padding: 1.5rem 1rem
-      position: absolute
-      line-height: 1.2
-      width: 'calc(100% - %s * 2)' % 1rem
-      --text-banner: white
-      color: var(--text-banner)
-      z-index: 2
-      &[position=top]
-        top: 0
-        background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0))
-      &[position=bottom]
-        bottom: 0
-        background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.2))
-      div+div
-        margin-top: 4px
-      .text
-        color: unset
-        trans1 all
-        text-shadow: 0 2px 4px rgba(0,0,0,0.2)
-      .topic
-        font-size: $fs-13
-      .headline
-        font-weight: 500
-        font-size: $fsh3
-      .caption
-        font-size: $fs-14
-      @media screen and (max-width: $device-mobile)
-        padding: 1rem
-        div+div
-          margin-top: 2px
-        .headline
-          font-size: $fsh4
-        .caption
-          font-size: $fs-13
-  h2
-    margin: .25rem 0
-    font-size: $fsh4
+      left: 0
+      // 🔥 关键：图片右侧渐变透明（柔边融合）
+      mask: linear-gradient(90deg, #fff 70%, transparent)
+      -webkit-mask: linear-gradient(90deg, #fff 70%, transparent)
+      opacity: 0.95
+
+  article.md-text
+    padding: 1.5rem
+    color: var(--text)
+    flex: 1
+    min-width: 0
+
+    h2.post-title
+      margin-top: 0
+      font-size: $fsh4
+      line-height: 1.3
+      color: var(--text-p1)
+
+    .excerpt p
+      color: var(--text-p2)
+      line-height: 1.6
+      font-size: $fs-14
+
+    .meta.cap
+      font-size: $fs-12
+      color: var(--text-p3)
+      svg
+        width: 12px
+        height: 12px
+        margin-right: 4px
+
+  // 移动端堆叠
+  @media screen and (max-width: $device-mobile)
+    flex-direction: column
+
+    .post-cover
+      flex: 0 0 auto
+      height: 200px
+      position: relative
+
+      img
+        width: 100%
+        height: 100%
+        // 移动端不需要 mask（全图显示）
+        mask: none
+        -webkit-mask: none
 
 
 // wiki

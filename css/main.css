@@ -8887,116 +8887,81 @@ details.toc[open] >div.body section .header+.doc_tree {
   color: var(--text-p2);
   font-size: 0.875rem;
 }
-.post-list .post-card .post-cover {
+.post-list .post-card.post {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  border-radius: 24px;
   overflow: hidden;
-  width: calc(100% + 2 * 1rem);
-  border-radius: 0;
-  margin-left: -1rem;
-  margin-top: -1rem;
-  margin-right: -1rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: box-shadow 0.3s ease;
+  text-decoration: none !important;
+  background: var(--card);
+}
+.post-list .post-card.post:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+.post-list .post-card.post .post-cover {
+  flex: 0 0 40%;
+  margin: 0 !important;
+  width: auto !important;
+  position: relative;
   background: var(--block);
 }
-.post-list .post-card .post-cover:not(.lazy) {
-  transition: transform 1s ease-out;
-  -moz-transition: transform 1s ease-out;
-  -webkit-transition: transform 1s ease-out;
-  -o-transition: transform 1s ease-out;
-}
-.post-list .post-card .post-cover img {
-  object-fit: cover;
-  width: 100%;
-  border-radius: 0;
-  aspect-ratio: 2;
-}
-.post-list .post-card.post.photo .cover {
-  position: relative;
-  line-height: 0;
-}
-.post-list .post-card.post.photo .cover img {
+.post-list .post-card.post .post-cover img {
+  height: 100%;
   width: 100%;
   object-fit: cover;
-  aspect-ratio: 2;
-  z-index: 0;
-}
-.post-list .post-card.post.photo .cover:before {
-  content: '';
-  z-index: 1;
+  display: block;
   position: absolute;
+  top: 0;
   left: 0;
-  right: 0;
-  height: var(--blur-height);
-  backdrop-filter: saturate(var(--blur-sat)) blur(var(--blur-px));
-  -webkit-backdrop-filter: saturate(var(--blur-sat)) blur(var(--blur-px));
-  transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  -webkit-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
+  mask: linear-gradient(90deg, #fff 70%, transparent);
+  -webkit-mask: linear-gradient(90deg, #fff 70%, transparent);
+  opacity: 0.95;
 }
-.post-list .post-card.post.photo .cover[position=top]:before {
-  top: 0;
-  mask: linear-gradient(#000, rgba(0,0,0,0.75), transparent);
-  -webkit-mask: linear-gradient(#000, rgba(0,0,0,0.75), transparent);
+.post-list .post-card.post article.md-text {
+  padding: 1.5rem;
+  color: var(--text);
+  flex: 1;
+  min-width: 0;
 }
-.post-list .post-card.post.photo .cover[position=bottom]:before {
-  bottom: 0;
-  mask: linear-gradient(transparent, rgba(0,0,0,0.75), #000);
-  -webkit-mask: linear-gradient(transparent, rgba(0,0,0,0.75), #000);
+.post-list .post-card.post article.md-text h2.post-title {
+  margin-top: 0;
+  font-size: calc(1rem + 4px);
+  line-height: 1.3;
+  color: var(--text-p1);
 }
-.post-list .post-card.post.photo .cover .cover-info {
-  padding: 1.5rem 1rem;
-  position: absolute;
-  line-height: 1.2;
-  width: calc(100% - 1rem * 2);
-  --text-banner: #fff;
-  color: var(--text-banner);
-  z-index: 2;
-}
-.post-list .post-card.post.photo .cover .cover-info[position=top] {
-  top: 0;
-  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0));
-}
-.post-list .post-card.post.photo .cover .cover-info[position=bottom] {
-  bottom: 0;
-  background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.2));
-}
-.post-list .post-card.post.photo .cover .cover-info div+div {
-  margin-top: 4px;
-}
-.post-list .post-card.post.photo .cover .cover-info .text {
-  color: unset;
-  transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  -webkit-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-.post-list .post-card.post.photo .cover .cover-info .topic {
-  font-size: 0.8125rem;
-}
-.post-list .post-card.post.photo .cover .cover-info .headline {
-  font-weight: 500;
-  font-size: calc(1rem + 7px);
-}
-.post-list .post-card.post.photo .cover .cover-info .caption {
+.post-list .post-card.post article.md-text .excerpt p {
+  color: var(--text-p2);
+  line-height: 1.6;
   font-size: 0.875rem;
 }
-@media screen and (max-width: 500px) {
-  .post-list .post-card.post.photo .cover .cover-info {
-    padding: 1rem;
-  }
-  .post-list .post-card.post.photo .cover .cover-info div+div {
-    margin-top: 2px;
-  }
-  .post-list .post-card.post.photo .cover .cover-info .headline {
-    font-size: calc(1rem + 4px);
-  }
-  .post-list .post-card.post.photo .cover .cover-info .caption {
-    font-size: 0.8125rem;
-  }
+.post-list .post-card.post article.md-text .meta.cap {
+  font-size: 0.75rem;
+  color: var(--text-p3);
 }
-.post-list .post-card.post.photo h2 {
-  margin: 0.25rem 0;
-  font-size: calc(1rem + 4px);
+.post-list .post-card.post article.md-text .meta.cap svg {
+  width: 12px;
+  height: 12px;
+  margin-right: 4px;
+}
+@media screen and (max-width: 500px) {
+  .post-list .post-card.post {
+    flex-direction: column;
+  }
+  .post-list .post-card.post .post-cover {
+    flex: 0 0 auto;
+    height: 200px;
+    position: relative;
+  }
+  .post-list .post-card.post .post-cover img {
+    width: 100%;
+    height: 100%;
+    mask: none;
+    -webkit-mask: none;
+  }
 }
 .post-list .post-card.wiki article {
   display: flex;

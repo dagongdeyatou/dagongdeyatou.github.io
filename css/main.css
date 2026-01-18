@@ -2662,6 +2662,7 @@ div.toast.show {
   margin: 4px 0;
 }
 .page-footer .text {
+  text-align: center;
   margin-top: 0.5rem;
 }
 .page-footer .text p {

@@ -9433,10 +9433,12 @@ a[data-fancybox] {
   border-radius: 8px;
 }
 .OwO .OwO-body {
-  background-color: var(--block) !important;
+  background-color: var(--card) !important;
   color: var(--text-p1) !important;
+  border: 1px solid var(--block-border);
+  border-radius: 16px;
 }
-.OwO .OwO-body .OwO-items .OwO-item img {
+.OwO .OwO-items .OwO-item img {
   max-height: 26px;
   width: unset;
 }

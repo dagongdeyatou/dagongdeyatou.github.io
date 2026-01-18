@@ -1,4 +1,5 @@
 ---
 menu_id: about
-title: 关于
+title: 笔记
+comments: false
 ---
